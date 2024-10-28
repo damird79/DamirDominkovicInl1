@@ -15,5 +15,6 @@ javac ./$NAME$SUFFIX/GuessingGame.java
 echo "running GuessingGame"
 java ./$NAME$SUFFIX/GuessingGame.java
 echo "Done"
+echo "removing class files"
 rm ./$NAME$SUFFIX/*.class
 ls ./$NAME$SUFFIX/
