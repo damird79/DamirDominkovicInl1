@@ -6,15 +6,15 @@ SUFFIX="_labb"
 chmod +x "$0"
 echo $NAME
 echo "${NAME}s program"
-echo "Running game from"
 mkdir $NAME$SUFFIX
 cp ./*.java $NAME$SUFFIX
-echo $(pwd)
+cd $NAME$SUFFIX
+echo "Running game from $(pwd)"
 echo "compiling GuessingGame"
-javac ./$NAME$SUFFIX/GuessingGame.java
+javac GuessingGame.java
 echo "running GuessingGame"
-java ./$NAME$SUFFIX/GuessingGame.java
+java GuessingGame.java
 echo "Done"
 echo "removing class files"
-rm ./$NAME$SUFFIX/*.class
-ls ./$NAME$SUFFIX/
+rm *.class
+ls 
