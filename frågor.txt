@@ -1,0 +1,39 @@
+jag satsar på VG
+
+Pull är kommando som man använder man när man vill hämta data från originell repository för att kolla om det finns några ändringar
+ i repositorien innan man skickar egna ändringar och undvika fel. Push är kommando som man använder när man vill skicka egna ändringar
+ till originell repository.
+
+Log använder man för att inspektera historiken, att filtrera eller leta efter specifika ändringar. Status använder man att ha överblick
+ över working directory och staging area.
+
+Git branch möjliggör för oss att skapa separata sammanhang där vi kan prova nya saker eller till och med arbeta med flera idéer
+ parallellt utan att riskera baskod. Om vi gör ändringar i en gren påverkar de inte de andra grenarna förrän vi mergar ändringarna.
+
+git reset --mixed eller endast git reset unstagear från staging area. Vi får output "Unstaged changes after reset: och "M <filnamn>"
+ i andra rad.
+
+git reset --hard raderar commit och rullar tillbaka till nästsista commit. Vi får output "HEAD is now at <hashkod från nästsista commit>
+ <kommentar från nästsista commit>".
+
+git revert HEAD rullar till nästsista commit men behåller commit som vi gjorde sist. Den öppnar textredigerare där det står "Revert
+ <kommentar från sista kommit> och i andra raden "This reverts commit <hela hashkod från sista commit>
+
+git reset --soft HEAD~1 tar bort commit och skickar den tillbaka till staging area. Ingen output kommer om man använder den.
+
+git rebase löser samma problem som git merge. Både kommandot är designad att integrera ändringar från en branch till den andra. Dock, de
+ gör det på 2 helt olika sätt. 
+
+git merge slår ihåp en feature branch med main branch och skapar ny merge commit. Ingen befintlig commit förändras, historiken blir intakt
+ och varje commit-logg kan följas tillbaka till sitt ursprung medan git rebase flyttar basen för en feature branch till den senaste
+ committen i main branch villket innebär att alla commits i feature-branchen "omskrivs" som om de skapades direkt ovanpå den nuvarande
+ statusen för main. 
+
+Varje har fördelar och nackdelar. Fördelar med git merge är att man ser varje commit och vem gjorde den, mindre risk för konflikter.
+ Nackdelar är att om flera merge commits skapas, särskilt i stora projekt, kan historiken bli svår att läsa och följa och större commit
+ historik eftersomvarje merge är en extra commit. fördelar med git rebase är mycket renare historik eftersom den undviker extra commitar
+ (som merge commitar) som gör den historiken enklare att läsa. Nackdelar är större risk för konflikter, förlorad historik som gör det
+ otydligt vem gjorde vad och är olämplig för brancher som delas mellan flera personer. 
+
+Min åsikt ät att rebase är kanske mer lämplig för mega projekter där det kanske finns hundratals commitar dagligen. Men för mindre projekt är 
+kanske bättre att använda merge som är mer tydlig. Finns screenshot med lämpliga namn i ett separat katalog.
